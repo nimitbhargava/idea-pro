@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
-import * as ReadableAPI from '../utils/ReadableAPI';
-import { loadCategories } from '../actions/categories';
+
+import {
+  fetchCategories
+} from '../actions/categories';
+
+
 import FilterLink from './FilterLink';
 import Dashboard from './Dashboard';
 import PostDetail from './PostDetail';
 
-
 class App extends Component {
 
   componentDidMount() {
-    ReadableAPI.getCategories().then( (categories) => {
-      this.props.loadCategories(categories);
-    })
+    this.props.fetchCategories();
   }
 
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
           <h1>Readable</h1>
           <p>
             <FilterLink
+              exact
               filter='/'
             >all</FilterLink>
             {categories.map( category => (
@@ -47,7 +49,7 @@ const mapStateToProps  = ({ categories }) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  loadCategories: (data) => dispatch(loadCategories(data))
+  fetchCategories: (data) => dispatch(fetchCategories(data))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
