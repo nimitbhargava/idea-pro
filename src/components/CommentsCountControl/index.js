@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import * as commentActions from '../../actions/comments';
 import { faComments } from '@fortawesome/fontawesome-free-solid'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import './CommentsCountControl.css';
 
 const propTypes = {
   parentId: PropTypes.string
 };
 
-class CommentsCountControl extends Component {
+class CommentsCountCountrol extends Component {
 
   componentDidMount () {
     const parentId = this.props.parentId;
@@ -27,11 +28,11 @@ class CommentsCountControl extends Component {
     const commentCount = this.commentCount( comments[parentId] );
 
     return (
-      <div className="CommentsCountCountrol input-group mr-2">
+      <div className="CommentsCountControl input-group">
         <span className="input-group-addon">
           <FontAwesomeIcon iconDefinition={faComments} />
         </span>
-        <span className="input-group-addon bg-white">
+        <span className="input-group-addon">
           {commentCount}
         </span>
       </div>
@@ -39,10 +40,10 @@ class CommentsCountControl extends Component {
   }
 };
 
-CommentsCountControl.propTypes = propTypes;
+CommentsCountCountrol.propTypes = propTypes;
 
 const mapStateToProps  = ({ comments }, ownProps) => ({
   comments
 })
 
-export default connect(mapStateToProps, commentActions)(CommentsCountControl)
+export default connect(mapStateToProps, commentActions)(CommentsCountCountrol)
