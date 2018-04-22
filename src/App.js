@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom';
 
-import {
-  fetchCategories
-} from './actions/categories';
-
-
-import AppHeader from './components/AppHeader/index';
-import PostListView from './components/PostListView/index';
-import PostDetail from './components/PostDetail/index';
+import AppHeader from './components/AppHeader';
+import PostListView from './components/PostListView';
+import PostDetail from './components/PostDetail';
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.fetchCategories();
-  }
-
   render() {
-    const { categories } = this.props;
     return (
       <div className="app">
-        <AppHeader categories={categories} />
+        <AppHeader />
         <Switch>
           <Route exact path="/new" render={() => (
             <div>New Post</div>
@@ -35,12 +23,6 @@ class App extends Component {
   }
 }
 
-const mapStateToProps  = ({ categories }) => ({
-  categories
-})
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchCategories: (data) => dispatch(fetchCategories(data))
-})
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default withRouter(App)
