@@ -10,7 +10,7 @@ const propTypes = {
   parentId: PropTypes.string
 };
 
-class CommentsCountCountrol extends Component {
+class CommentsCountControl extends Component {
 
   componentDidMount () {
     const parentId = this.props.parentId;
@@ -40,10 +40,10 @@ class CommentsCountCountrol extends Component {
   }
 };
 
-CommentsCountCountrol.propTypes = propTypes;
+CommentsCountControl.propTypes = propTypes;
 
 const mapStateToProps  = ({ comments }, ownProps) => ({
   comments
 })
 
-export default connect(mapStateToProps, commentActions)(CommentsCountCountrol)
+export default connect(mapStateToProps, commentActions)(CommentsCountControl)

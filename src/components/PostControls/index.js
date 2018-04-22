@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import VoteControl from '../VoteControl';
 import CommentsCountControl from '../CommentsCountControl';
-import { faPencilAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import EditDeleteControls from '../EditDeleteControls';
 import './PostControls.css';
 
 export default class PostControls extends Component {
 
   handleDeletePost = () => {
     console.log('Delete post id: ' + this.props.post.id);
+  }
+
+  handleEditPost = () => {
+    console.log('Edit post id: ' + this.props.post.id);
   }
 
   render () {
@@ -18,15 +21,12 @@ export default class PostControls extends Component {
     return (
       <div className="PostControls">
         <div className="btn-toolbar">
-          <CommentsCountControl parentId={post.id} />
           <VoteControl entry={ post } />
-          <div className="PostControls--edit-remove mr-0 ml-auto">
-            <button className="btn btn-light"><FontAwesomeIcon iconDefinition={faPencilAlt} /></button>
-            <button
-              className="btn btn-light"
-              onClick={ () => { this.handleDeletePost() } }
-            ><FontAwesomeIcon iconDefinition={faTrashAlt} /></button>
-          </div>
+          <CommentsCountControl parentId={post.id} />
+          <EditDeleteControls
+            onDeleteClick={ () => { this.handleDeletePost() } }
+            onEditClick={ () => { this.handleEditPost() } }
+          />
         </div>
       </div>
     );
