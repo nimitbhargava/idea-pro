@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav } from 'reactstrap';
-import NavItemLink from './NavItemLink';
+import NavItemLink from '../NavIteamLink/index';
 
 import './AppHeader.css';
 
