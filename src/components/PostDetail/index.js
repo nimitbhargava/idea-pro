@@ -21,6 +21,14 @@ class PostDetail extends Component {
     }
   }
 
+  sortCommentsByDate = ( comments ) => {
+    if( comments !== undefined ) {
+      return comments.sort((a, b) => a.timestamp < b.timestamp);
+    } else {
+      return comments;
+    }
+  }
+
   render () {
 
     const { post, comments } = this.props;
@@ -50,7 +58,7 @@ class PostDetail extends Component {
                   <h6 className="card-subtitle text-muted">Comments ({postComments.length})</h6>
                 </div>
                 <ul className="list-group list-group-flush">
-                  {postComments.map( comment => (
+                  { this.sortCommentsByDate(postComments).map( comment => (
                     <li
                       key={comment.id}
                       className="list-group-item"
