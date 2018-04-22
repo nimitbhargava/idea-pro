@@ -17,22 +17,16 @@ class AppHeader extends Component {
           <div className="navbar-nav-scroll">
             <Nav className="flex-row" navbar>
 
-              <NavItemLink
-                exact
-                filter='/'
-              >all</NavItemLink>
-
               {categories.map( category => (
                 <NavItemLink
                   key={category.path}
                   filter={`/${category.path}`}
                 >{category.name}</NavItemLink>
               ))}
-
+              <li className="vertical-divider"></li>
               <NavItemLink
                 exact
                 filter='/new'
-                className="btn btn-primary btn-sm"
               >add post</NavItemLink>
             </Nav>
           </div>
