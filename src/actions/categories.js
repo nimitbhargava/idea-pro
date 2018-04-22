@@ -1,7 +1,14 @@
 import * as ReadableAPI from '../utils/ReadableAPI';
 
-export const LOAD_CATEGORIES = 'LOAD_CATEGORIES';
-export const SELECT_CATEGORY = 'SELECT_CATEGORY';
+import {
+  LOAD_CATEGORIES,
+  SELECT_CATEGORY
+} from './actionTypes'
+
+export const loadCategories = categories => ({
+  type: LOAD_CATEGORIES,
+  categories
+});
 
 // Fetch categories from API
 export const fetchCategories = () => dispatch => (
@@ -10,10 +17,6 @@ export const fetchCategories = () => dispatch => (
     .then(categories => dispatch(loadCategories(categories)))
 );
 
-export const loadCategories = categories => ({
-  type: LOAD_CATEGORIES,
-  categories
-});
 
 export const selectCategory = (selectedCategory) => {
   return {
