@@ -17,7 +17,7 @@ class PostItem extends Component {
             <h4>{post.title}</h4>
           </Link>
           <footer className="blockquote-footer">
-            Writte by {post.author}, { fromNow(post.timestamp)}
+            Written by {post.author}, { fromNow(post.timestamp)}
           </footer>
         </div>
         <div className="card-footer">

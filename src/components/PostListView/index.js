@@ -29,7 +29,7 @@ class PostListView extends Component {
 
     return (
       <div className="container">
-        {posts !== undefined ? posts.map( post => (
+        {posts !== undefined && posts.length ? posts.map( post => (
           <PostItem
             key={post.id}
             post={post}
@@ -37,7 +37,7 @@ class PostListView extends Component {
         )):(
           <div className="PostListView--no-posts card bg-light">
             <div className="card-body text-center">
-              No posts in <em>{this.props.match.params.category}</em>
+              No posts in <strong>{this.props.match.params.category}</strong>
             </div>
           </div>
         )}
