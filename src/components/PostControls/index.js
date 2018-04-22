@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import VoteControl from '../VoteControl';
 import CommentsCountControl from '../CommentsCountControl';
 import EditDeleteControls from '../EditDeleteControls';
-import './PostControls.css';
 
 export default class PostControls extends Component {
 
