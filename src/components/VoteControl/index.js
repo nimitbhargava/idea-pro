@@ -29,7 +29,7 @@ class VoteControl extends Component {
         >
           <FontAwesomeIcon iconDefinition={faChevronDown} flip="horizontal" />
         </button>
-        <span className="input-group-addon">{score ? score : 0}</span>
+        <span className="input-group-addon">{score ? score : 1}</span>
         <button className="btn"
                 onClick={ () => { this.vote(entry, 'upVote') } }
         >
