@@ -1,0 +1,6 @@
+.SortControl {
+  margin: 1rem 0; }
+  .SortControl button {
+    cursor: pointer; }
+    .SortControl button svg {
+      margin-right: .2rem; }

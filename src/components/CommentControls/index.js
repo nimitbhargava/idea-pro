@@ -13,7 +13,7 @@ class CommentControls extends Component {
   }
 
   handleEditComment = () => {
-    console.log('Edit comment id: ' + this.props.comment.id);
+    this.props.editClickHandler();
   }
 
   render () {
@@ -24,7 +24,7 @@ class CommentControls extends Component {
       <div className="CommentControls btn-toolbar">
         <VoteControl entry={ comment } />
 
-        <div className="CommentsCountCountrol input-group">
+        <div className="CommentsCountControl input-group">
           <span className="input-group-addon"><small>{ fromNow(comment.timestamp)}</small></span>
         </div>
 

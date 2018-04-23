@@ -1,0 +1,26 @@
+.VoteControl {
+  margin-right: 1rem; }
+  .VoteControl button {
+    cursor: pointer;
+    padding-left: 0px;
+    padding-right: 0px;
+    color: #6c757d;
+    background-color: transparent;
+    border-color: transparent; }
+    .VoteControl button:hover {
+      background-color: transparent;
+      border-color: transparent;
+      color: #343a40; }
+    .VoteControl button:focus {
+      outline: none;
+      box-shadow: none; }
+    .VoteControl button:first-child {
+      margin-right: .5rem; }
+  .VoteControl .input-group-addon {
+    padding-left: 0px;
+    padding-right: 0px;
+    color: #6c757d;
+    background-color: transparent;
+    border-color: transparent; }
+    .VoteControl .input-group-addon + button {
+      margin-left: .5rem; }

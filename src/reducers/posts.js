@@ -1,5 +1,6 @@
 import {
   LOAD_POSTS,
+  LOAD_POST,
   LOAD_NEW_POST,
   DELETE_POST,
   VOTE
@@ -20,6 +21,12 @@ const posts = (state = {}, action) => {
         posts: state.posts.concat(post)
       };
 
+    case LOAD_POST:
+      return state.posts !== undefined ? {
+        ...state,
+        posts: state.posts.map( p => p.id === post.id ? post : p)
+      } : state;
+
     case DELETE_POST:
       return {
         ...state,
@@ -29,13 +36,12 @@ const posts = (state = {}, action) => {
     case VOTE:
       const { id, score } = action;
       if ( state.posts !== undefined ) {
-        const votedPosts = state.posts.map((p) => {
-          if (p.id === id) { p.voteScore = score }
-          return p;
-        });
         return {
           ...state,
-          posts: votedPosts
+          posts: state.posts.map((p) => {
+            if (p.id === id) p.voteScore = score;
+            return p;
+          })
         };
       } else {
         return state;

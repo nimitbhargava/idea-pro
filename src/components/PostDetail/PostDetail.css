@@ -1,0 +1,11 @@
+.PostDetail {
+  margin: 1rem 0; }
+  .PostDetail time {
+    display: inline-block;
+    font-size: 80%;
+    font-weight: 400;
+    margin-bottom: .5rem; }
+  .PostDetail--body {
+    margin: 1rem 0; }
+  .PostDetail .card-footer {
+    border-top: 0px; }

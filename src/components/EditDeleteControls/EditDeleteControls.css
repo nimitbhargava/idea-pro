@@ -1,0 +1,8 @@
+.EditDeleteControls .btn {
+  cursor: pointer;
+  color: #6c757d;
+  background-color: transparent; }
+  .EditDeleteControls .btn:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: #343a40; }

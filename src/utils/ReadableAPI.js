@@ -11,18 +11,28 @@ const headers = {
   'Authorization': token
 }
 
+// Categories
 export const fetchCategories = () =>
   fetch(`${apiUrl}/categories`, { headers })
     .then(res => res.json())
     .then(data => data.categories);
 
 
-export const fetchPost = (id) =>
+// Posts
+export const fetchPosts = (filter) => {
+  const url = filter ? `${apiUrl}/${filter}/posts` : `${apiUrl}/posts`
+  return fetch(url, { headers })
+    .then(res => res.json())
+    .then(data => data)
+}
+
+// Post
+export const fetchPost = id =>
   fetch(`${apiUrl}/posts/${id}`, { headers })
     .then(res => res.json())
     .then(data => data);
 
-export const addPost = ( post ) => {
+export const addPost = post => {
   const postData = {
     ...post,
     timestamp: new Date().getTime()
@@ -36,18 +46,33 @@ export const addPost = ( post ) => {
     .then(data => data);
 }
 
-export const removePost = (id) =>
+export const updatePost = post => {
+  const postData = {
+    ...post,
+    timestamp: new Date().getTime()
+  };
+
+  return fetch(`${apiUrl}/posts/${post.id}`, {
+    method: "PUT",
+    body: JSON.stringify(postData),
+    headers
+  }).then(res => res.json())
+    .then(data => data);
+}
+
+export const removePost = id =>
   fetch(`${apiUrl}/posts/${id}`, {
     method: 'DELETE',
     headers
   });
 
-export const fetchPostComments = (id) =>
+// Comments
+export const fetchPostComments = id =>
   fetch(`${apiUrl}/posts/${id}/comments`, { headers })
     .then(res => res.json())
     .then(data => data);
 
-export const addNewComment = ( comment ) => {
+export const addNewComment = comment => {
   const commentData = {
     ...comment,
     timestamp: new Date().getTime()
@@ -61,18 +86,26 @@ export const addNewComment = ( comment ) => {
     .then(data => data);
 }
 
-export const removeComment = (id) =>
+export const removeComment = id =>
   fetch(`${apiUrl}/comments/${id}`, {
     method: 'DELETE',
     headers
   });
 
-export const fetchPosts = (filter) => {
-  const url = filter ? `${apiUrl}/${filter}/posts` : `${apiUrl}/posts`
-  return fetch(url, { headers })
-    .then(res => res.json())
-    .then(data => data)
+export const updateComment = comment => {
+  const commentData = {
+    ...comment,
+    timestamp: new Date().getTime()
+  };
+
+  return fetch(`${apiUrl}/comments/${comment.id}`, {
+    method: "PUT",
+    body: JSON.stringify(commentData),
+    headers
+  }).then(res => res.json())
+    .then(data => data);
 }
+
 
 /**
  * Voting function for both posts and comments
