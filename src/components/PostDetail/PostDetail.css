@@ -9,3 +9,5 @@
     margin: 1rem 0; }
   .PostDetail .card-footer {
     border-top: 0px; }
+  .PostDetail .post-footer {
+    text-align: right; }

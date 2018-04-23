@@ -47,12 +47,13 @@ class PostDetail extends Component {
         {post && post.title ? (
           <div className="card">
             <div className="card-body">
-              <div className="card-subtitle">
-                <h6 className="mb-0">{post.author}</h6>
-                <time className="text-secondary" dateTime={ dateTimeFormat(post.timestamp)}>{ fromNow(post.timestamp)}</time>
-              </div>
               <h4 className="card-title">{post.title}</h4>
               <div className="PostDetail--body">{post.body}</div>
+              <div className="card-subtitle post-footer">
+                <h6 className="mb-0">{post.author}</h6>
+                <time className="text-secondary" dateTime={dateTimeFormat(post.timestamp)}>{fromNow(post.timestamp)}</time>
+              </div>
+
             </div>
 
             <div className="card-footer">
@@ -70,7 +71,7 @@ class PostDetail extends Component {
         ) : (
           <div className="PostListView--no-posts card bg-light">
             <div className="card-body text-center">
-              This post doesn't exist has been removed.
+              This post doesn't exist or has been removed.
             </div>
           </div>
         )}

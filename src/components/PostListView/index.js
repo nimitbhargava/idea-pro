@@ -6,6 +6,7 @@ import PostItem from '../PostItem';
 
 import { selectCategory } from '../../actions/categories';
 import { fetchPosts } from '../../actions/posts';
+import { Link } from 'react-router-dom';
 
 import './PostListView.css';
 
@@ -60,7 +61,8 @@ class PostListView extends Component {
         )):(
           <div className="PostListView--no-posts card bg-light">
             <div className="card-body text-center">
-              No posts in <em>{this.props.match.params.category}</em>
+              No posts in <strong>{this.props.match.params.category}</strong>.
+              Want to add a <Link to={'/new'}>new post</Link>?
             </div>
           </div>
         )}
