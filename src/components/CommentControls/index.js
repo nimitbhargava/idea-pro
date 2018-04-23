@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { removeComment } from '../../actions/comments';
 import VoteControl from '../VoteControl';
 import EditDeleteControls from '../EditDeleteControls';
 import { fromNow } from '../../utils/helpers';
@@ -6,7 +9,7 @@ import { fromNow } from '../../utils/helpers';
 class CommentControls extends Component {
 
   handleDeleteComment = () => {
-    console.log('Delete comment id: ' + this.props.comment.id);
+    this.props.removeComment(this.props.comment);
   }
 
   handleEditComment = () => {
@@ -21,7 +24,7 @@ class CommentControls extends Component {
       <div className="CommentControls btn-toolbar">
         <VoteControl entry={ comment } />
 
-        <div className="CommentsCountControl input-group">
+        <div className="CommentsCountCountrol input-group">
           <span className="input-group-addon"><small>{ fromNow(comment.timestamp)}</small></span>
         </div>
 
@@ -34,4 +37,4 @@ class CommentControls extends Component {
   }
 };
 
-export default CommentControls;
+export default withRouter(connect(null, { removeComment })(CommentControls))
