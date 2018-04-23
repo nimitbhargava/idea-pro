@@ -1,6 +1,7 @@
 import {
   LOAD_POSTS,
   LOAD_NEW_POST,
+  DELETE_POST,
   VOTE
 } from '../actions/actionTypes';
 
@@ -17,7 +18,13 @@ const posts = (state = {}, action) => {
       return {
         ...state,
         posts: state.posts.concat(post)
-      }
+      };
+
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter( p => p.id !== post.id )
+      };
 
     case VOTE:
       const { id, score } = action;
@@ -28,7 +35,7 @@ const posts = (state = {}, action) => {
       return {
         ...state,
         posts: votedPosts
-      }
+      };
 
     default:
       return state;
